@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escuelas de Formación – Colegio Gimnasio Angeles</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #ffffff; color: #333; line-height: 1.7; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+    /* ===== COLORS ===== */
+    :root { --azul: #004aad; --rosa: #ff69b4; --verde: #28a745; --azul-claro: #17a2b8; --amarillo: #ffc107; }
+    /* ===== HEADER ===== */
+    .site-header { position: sticky; top: 0; z-index: 1000; background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,.08); display: flex; align-items: center; justify-content: space-between; padding: 12px 40px; flex-wrap: wrap; gap: 12px; }
+    .header-left { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .header-left img { max-width: 220px; height: auto; }
+    .header-title { font-size: 34px; font-weight: 800; letter-spacing: -.5px; white-space: nowrap; }
+    .c-azul { color: var(--azul); } .c-rosa { color: var(--rosa); } .c-verde { color: var(--verde); } .c-amarillo { color: var(--amarillo); } .c-azul-c { color: var(--azul-claro); }
+    .header-nav { display: flex; align-items: center; gap: 8px; }
+    .header-nav a { color: var(--azul); font-weight: 700; font-size: 16px; padding: 8px 18px; border-radius: 30px; transition: background .3s, color .3s; }
+    .header-nav a:hover { background: var(--rosa); color: #fff; }
+    /* ===== HERO / INICIO ===== */
+    .hero { padding: 100px 20px 60px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; opacity: .10; z-index: 0; }
+    .hero::before { width: 320px; height: 320px; background: var(--rosa); top: -60px; left: -80px; }
+    .hero::after { width: 260px; height: 260px; background: var(--amarillo); bottom: -40px; right: -60px; }
+    .hero h1 { font-size: clamp(42px, 6vw, 72px); color: var(--azul); font-weight: 900; position: relative; display: inline-block; z-index: 1; }
+    .hero h1::after { content: ''; display: block; margin: 14px auto 0; width: 60%; height: 14px; background: var(--amarillo); border-radius: 50% 50% 50% 50% / 100% 100% 60% 60%; transform: rotate(-1deg); }
+    /* ===== SCHOOL SECTION ===== */
+    .school-section { max-width: 1320px; margin: 0 auto 90px; padding: 0 40px; }
+    .school-card { display: flex; align-items: center; gap: 50px; min-height: 580px; position: relative; }
+    .school-card.reverse { flex-direction: row-reverse; }
+    .school-text { flex: 1 1 55%; display: flex; flex-direction: column; gap: 28px; }
+    .school-btn { display: inline-flex; align-items: center; gap: 0; background: var(--azul); color: #fff; font-size: 22px; font-weight: 800; padding: 18px 38px; border-radius: 50px; border: none; cursor: pointer; transition: transform .3s, box-shadow .3s; align-self: flex-start; line-height: 1.3; }
+    .school-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,74,173,.25); }
+    .school-desc { font-size: 16.5px; color: #444; text-align: justify; line-height: 1.85; }
+    .school-img-wrap { flex: 1 1 42%; display: flex; align-items: center; justify-content: center; position: relative; }
+    .blob { position: relative; width: 420px; height: 500px; display: flex; align-items: center; justify-content: center; }
+    .blob::before { content: ''; position: absolute; inset: 0; border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%; z-index: 0; transition: border-radius .6s; }
+    .blob:hover::before { border-radius: 38% 62% 54% 46% / 44% 60% 40% 56%; }
+    .blob.green::before { background: var(--verde); } .blob.pink::before { background: var(--rosa); } .blob.cyan::before { background: var(--azul-claro); }
+    .blob img { position: relative; z-index: 1; max-width: 340px; max-height: 440px; object-fit: contain; border-radius: 42% 58% 48% 52% / 55% 42% 58% 45%; transition: border-radius .6s, transform .4s; }
+    .blob:hover img { border-radius: 58% 42% 52% 48% / 42% 55% 45% 58%; transform: scale(1.03); }
+    .blob::after { content: ''; position: absolute; width: 60px; height: 60px; border-radius: 50%; opacity: .25; z-index: 2; }
+    .blob.green::after { background: var(--amarillo); top: -15px; right: 20px; } .blob.pink::after { background: var(--azul); bottom: -10px; left: 15px; } .blob.cyan::after { background: var(--amarillo); top: 10px; left: -10px; }
+    .school-img-wrap .dot-extra { position: absolute; width: 35px; height: 35px; border-radius: 50%; opacity: .18; z-index: 3; }
+    /* ===== DIVIDER BLOBS ===== */
+    .section-divider { text-align: center; margin: -20px 0 20px; position: relative; height: 40px; }
+    .section-divider span { display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin: 0 8px; }
+    /* ===== CONTACT ===== */
+    .contact-section { background: linear-gradient(135deg, #f0f7ff 0%, #fff5fb 100%); padding: 80px 40px 100px; position: relative; overflow: hidden; }
+    .contact-section::before { content: ''; position: absolute; width: 400px; height: 400px; background: var(--rosa); opacity: .06; border-radius: 50%; top: -100px; right: -100px; }
+    .contact-section h2 { text-align: center; font-size: 48px; color: var(--azul); font-weight: 900; margin-bottom: 50px; position: relative; }
+    .contact-section h2::after { content: ''; display: block; width: 120px; height: 8px; background: var(--amarillo); border-radius: 20px; margin: 14px auto 0; }
+    .contact-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; }
+    .contact-card { background: #fff; border-radius: 24px; padding: 36px 32px; box-shadow: 0 8px 32px rgba(0,74,173,.07); text-align: center; transition: transform .3s, box-shadow .3s; }
+    .contact-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,74,173,.13); }
+    .contact-icon { font-size: 36px; margin-bottom: 14px; }
+    .contact-card h3 { color: var(--azul); font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+    .contact-card p, .contact-card a { color: #555; font-size: 15.5px; line-height: 1.9; }
+    .contact-card a { color: var(--azul); transition: color .3s; display: block; }
+    .contact-card a:hover { color: var(--rosa); }
+    /* ===== FOOTER ===== */
+    .site-footer { background: var(--azul); color: #fff; text-align: center; padding: 30px 20px; font-size: 14px; letter-spacing: .3px; }
+    .site-footer span { color: var(--amarillo); }
+    /* ===== ANIMATIONS ===== */
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .blob { animation: float 6s ease-in-out infinite; }
+    .school-card:nth-child(even) .blob { animation-delay: -3s; }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) { .school-card, .school-card.reverse { flex-direction: column !important; min-height: auto; gap: 30px; } .blob { width: 300px; height: 380px; } .blob img { max-width: 260px; max-height: 340px; } .header-title { font-size: 22px; } .site-header { padding: 12px 20px; } .school-section { padding: 0 20px; } .school-btn { font-size: 18px; padding: 14px 28px; } }
+    @media (max-width: 600px) { .header-left img { max-width: 150px; } .header-title { font-size: 18px; } .blob { width: 250px; height: 320px; } .blob img { max-width: 210px; max-height: 280px; } .hero h1 { font-size: 36px; } }
+    /* ===== MODAL ===== */
+    #modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+    #modal-img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+    .close { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 50px; font-weight: bold; cursor: pointer; }
+    .close:hover { color: #999; }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-left">
+      <img src="https://angelitos.edu.co/wp-content/uploads/2024/01/LogoGimnasioAngeles_V1-1-1536x414.png" alt="Logo Colegio Gimnasio Angeles">
+      <div class="header-title">
+        <span class="c-azul">C</span><span class="c-rosa">o</span><span class="c-verde">l</span><span class="c-amarillo">e</span><span class="c-rosa">g</span><span class="c-azul">i</span><span class="c-verde">o</span>
+        <span class="c-rosa">Gimnasio</span>
+        <span class="c-azul">A</span><span class="c-rosa">n</span><span class="c-verde">g</span><span class="c-amarillo">e</span><span class="c-rosa">l</span><span class="c-azul">e</span><span class="c-verde">s</span>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <a href="javascript:void(0);" onclick="openModal('https://preview.redd.it/feliz-jueves-v0-ak7sus2ut5nf1.jpg?width=640&crop=smart&auto=webp&s=d383bebbfad6d1ce48145f4ba37829b9dd862e95')">Inicio</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO / INICIO ===== -->
+  <section class="hero" id="inicio">
+    <h1>Escuelas De Formación</h1>
+  </section>
+
+  <!-- ===== ESCUELA 1: INGLÉS ===== -->
+  <div class="school-section">
+    <div class="school-card">
+      <div class="school-text">
+        <div>
+          <span class="school-btn" onclick="openModal('https://www.greatestphysiques.com/wp-content/uploads/2016/11/kevinlevrone.jpg')">Escuela Formativa de Inglés</span>
+        </div>
+        <p class="school-desc">
+          Nuestra Escuela Formativa Inglés está pensada como un espacio conversacional lleno de alegría, imaginación y aprendizaje, donde los niños y niñas de 3 a 12 años descubren el idioma a través de experiencias significativas y divertidas. En un ambiente cercano y participativo, los estudiantes exploran el inglés mediante juegos, canciones, dramatizaciones y actividades interactivas, que les permiten comunicarse con naturalidad y confianza. Cada clase se convierte en una oportunidad para fortalecer la creatividad, la socialización y la expresión oral, fomentando no solo el dominio del idioma, sino también el gusto por aprender, la curiosidad y la seguridad en sí mismos. Aquí, aprender inglés es vivir una aventura dinámica, lúdica y llena de descubrimientos. ✩
+        </p>
+      </div>
+      <div class="school-img-wrap">
+        <div class="dot-extra" style="background:var(--rosa);top:30px;left:10px;"></div>
+        <div class="blob green">
+          <img src="https://angelitos.edu.co/wp-content/uploads/2025/10/udeki-ingles-768x1024.png" alt="Escuela de Inglés">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="section-divider">
+    <span style="background:var(--amarillo);"></span>
+    <span style="background:var(--rosa);"></span>
+    <span style="background:var(--verde);"></span>
+  </div>
+
+  <!-- ===== ESCUELA 2: BALLET ===== -->
+  <div class="school-section">
+    <div class="school-card reverse">
+      <div class="school-text">
+        <div>
+          <span class="school-btn" onclick="openModal('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ZAljIkqaNbJL5qtlP5D7M6MxtpPVFQ-OPwcjxsG7jN_DSGsP50UGGHgbumaJVoVV3JIh1RpH7psn4TwFTNfA1mRSv-Hz5EbSJJt0gg&s=10')">Escuela Formativa de Ballet</span>
+        </div>
+        <p class="school-desc">
+          El aprendizaje del ballet, especialmente en el nivel de fundamentos, permite que las bailarinas desde temprana edad fortalezcan su cuerpo, trabajando en equilibrio, fuerza, flexibilidad, coordinación y armonía corporal. Nuestra Escuela Formativa de Ballet está dirigida a niñas de 3 a 11 años de edad, brindándoles un espacio para descubrir la belleza del movimiento y el arte de la expresión corporal. A través de esta disciplina artística, las estudiantes desarrollan la sensibilidad musical, el sentido rítmico y la memoria coreográfica, contribuyendo así a su desarrollo integral. En el ámbito personal, la práctica del ballet fomenta la disciplina, el orden, el respeto por sí mismas y por los demás, además de promover la estabilidad emocional y la alegría que surgen al disfrutar del arte del movimiento.
+        </p>
+      </div>
+      <div class="school-img-wrap">
+        <div class="dot-extra" style="background:var(--amarillo);bottom:20px;right:5px;"></div>
+        <div class="blob pink">
+          <img src="https://angelitos.edu.co/wp-content/uploads/2025/10/udeki-ballet-768x1024.png" alt="Escuela de Ballet">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="section-divider">
+    <span style="background:var(--azul);"></span>
+    <span style="background:var(--amarillo);"></span>
+    <span style="background:var(--rosa);"></span>
+  </div>
+
+  <!-- ===== ESCUELA 3: FÚTBOL SALA ===== -->
+  <div class="school-section">
+    <div class="school-card">
+      <div class="school-text">
+        <div>
+          <span class="school-btn">Escuela Formativa de Fútbol Sala</span>
+        </div>
+        <p class="school-desc">
+          El aprendizaje del fútbol sala, especialmente en el nivel de fundamentos, permite que los jugadores desde temprana edad fortalezcan su cuerpo, trabajando en equilibrio, fuerza, agilidad, coordinación y trabajo en equipo. Nuestra Escuela Formativa de Fútbol Sala está dirigida a niños de 3 a 11 años de edad, brindándoles un espacio para descubrir la emoción del juego y el arte del deporte colectivo. A través de esta disciplina deportiva, los estudiantes desarrollan la sensibilidad táctica, el sentido del ritmo del juego y la memoria de estrategias, contribuyendo así a su desarrollo integral. En el ámbito personal, la práctica del fútbol sala fomenta la disciplina, el orden, el respeto por sí mismos y por los demás, además de promover la estabilidad emocional y la alegría que surgen al disfrutar del deporte en equipo.
+        </p>
+      </div>
+      <div class="school-img-wrap">
+        <div class="dot-extra" style="background:var(--verde);top:50px;right:0;"></div>
+        <div class="blob cyan">
+          <img src="https://angelitos.edu.co/wp-content/uploads/2025/10/udeki-futsal-768x1024.png" alt="Escuela de Fútbol Sala">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="section-divider">
+    <span style="background:var(--verde);"></span>
+    <span style="background:var(--azul);"></span>
+    <span style="background:var(--amarillo);"></span>
+  </div>
+
+  <!-- ===== ESCUELA 4: CLUB DE TAREAS ===== -->
+  <div class="school-section">
+    <div class="school-card reverse">
+      <div class="school-text">
+        <div>
+          <span class="school-btn">Club de Tareas</span>
+        </div>
+        <p class="school-desc">
+          El Club de Tareas es un espacio diseñado para acompañar a los estudiantes de 3 a 11 años de edad en su proceso académico, brindándoles un entorno tranquilo, organizado y motivador donde puedan reforzar sus aprendizajes y fortalecer sus hábitos de estudio. Más que un lugar para realizar deberes, este club se convierte en un espacio de apoyo y crecimiento personal, en el que los niños aprenden a ser responsables, autónomos y perseverantes, desarrollando habilidades que los ayudan a asumir con entusiasmo sus retos escolares. A través de un acompañamiento constante y una orientación cercana, los estudiantes descubren que aprender también puede ser una experiencia alegre, significativa y compartida. 🌈
+        </p>
+      </div>
+      <div class="school-img-wrap">
+        <div class="dot-extra" style="background:var(--rosa);bottom:40px;left:20px;"></div>
+        <div class="blob green">
+          <img src="https://angelitos.edu.co/wp-content/uploads/2025/10/udeki-club-tareas2-1-768x1024.png" alt="Club de Tareas">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="contact-section" id="contacto">
+    <h2>Contacto</h2>
+    <div class="contact-grid">
+      <!-- Horarios -->
+      <div class="contact-card">
+        <div class="contact-icon">🕐</div>
+        <h3>Horarios de atención</h3>
+        <p>Lunes a viernes<br>de 8:00 a.m. a 5:00 p.m.</p>
+      </div>
+      <!-- Correos -->
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <h3>Correos electrónicos</h3>
+        <a href="mailto:secretaria@angelitos.edu.co">secretaria@angelitos.edu.co</a>
+        <a href="mailto:contadora@angelitos.edu.co">contadora@angelitos.edu.co</a>
+        <a href="mailto:admisiones@angelitos.edu.co">admisiones@angelitos.edu.co</a>
+      </div>
+      <!-- Teléfonos -->
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Contactos</h3>
+        <p>310 297 9455<br>314 782 9770</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    © 2026 <span>Colegio Gimnasio Ángeles</span> — Todos los derechos reservados.
+  </footer>
+
+  <!-- Modal easter egg -->
+  <div id="modal">
+    <span class="close">&times;</span>
+    <img id="modal-img" src="" alt="Easter egg">
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = document.querySelector('.close');
+
+    function openModal(src) {
+      modal.style.display = 'flex';
+      modalImg.src = src;
+    }
+
+    closeBtn.onclick = () => { modal.style.display = 'none'; };
+    modal.onclick = (e) => {
+      if (e.target === modal || e.target === closeBtn) {
+        modal.style.display = 'none';
+      }
+    };
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
