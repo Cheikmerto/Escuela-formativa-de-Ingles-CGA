@@ -1,1 +1,1 @@
-Escuelas formaitvas del Colegio Gimnasio Angeles :)
+Escuelas formativas del Colegio Gimnasio Angeles :)
